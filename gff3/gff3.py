@@ -760,7 +760,7 @@ class Gff3(object):
                                     # check for duplicate ID in non-adjacent lines
                                     if value in features and lines[-1].has_key('attributes') and lines[-1]['attributes'][tag] == value:
                                         pass
-                                    else:
+                                    elif value in features:
                                         self.add_line_error(line_data, {'message': 'Duplicate ID: "%s" in non-adjacent lines: %s' % (value, ','.join([str(f['line_index'] + 1) for f in features[value]])), 'error_type': 'FORMAT', 'location': ''}, log_level=logging.WARNING)
                                     features[value].append(line_data)
                 except IndexError:
